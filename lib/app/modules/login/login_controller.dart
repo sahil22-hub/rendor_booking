@@ -8,5 +8,6 @@ class LoginController extends GetxController {
   final hidePassword = true.obs;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final rememberMe = false.obs;
   final isLoginLoading = false.obs;
 }
