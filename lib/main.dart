@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
         title: 'Rendor Booking',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         home: LoginView(),

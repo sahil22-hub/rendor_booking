@@ -6,6 +6,7 @@ import 'package:render_booking/app/widgets/custom_elevated_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../config/colors.dart';
+import '../../widgets/social_login_button.dart';
 import '../../widgets/text_form_field_widget.dart';
 
 class LoginView extends StatelessWidget {
@@ -17,116 +18,249 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: mainHorizontalPadding,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    // take 40% of the screen height
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: Form(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextFormFieldWidget(
-                            color: Colors.black,
-                            onFieldTap: () {},
-                            hintText: "Email address",
-                            textInputType: TextInputType.emailAddress,
-                            actionKeyboard: TextInputAction.next,
-                            controller: loginController.emailController,
-                            validatorFunction: (value) {
-                              if (value.isEmpty) {
-                                return "Please enter your email";
-                              } else {
-                                return null;
-                              }
-                            },
-                            suffixIcon: Image.asset(
-                              'assets/images/email-icon.png',
-                              height: 3.h,
+                  Center(
+                    child: Column(
+                      children: [
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            text: "Welcome to\n",
+                            style: TextStyle(
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black,
+                              height: 1.4,
                             ),
-                            onSubmitField: () {},
-                          ),
-                          TextFormFieldWidget(
-                            color: Colors.black,
-                            onFieldTap: () {},
-                            onChanged: (value) {
-                              loginController.passwordController.text = value;
-                            },
-                            hintText: "Password",
-                            obscureText: loginController.hidePassword.value,
-                            textInputType: TextInputType.visiblePassword,
-                            actionKeyboard: TextInputAction.done,
-                            controller: loginController.passwordController,
-                            maxLines: 1,
-                            onSubmitField: () {},
-                            validatorFunction: (value) {
-                              if (value.isEmpty) {
-                                return "Please enter your password".tr;
-                              } else {
-                                return null;
-                              }
-                            },
-                            suffixIcon: Image.asset(
-                              'assets/images/password-icon.png',
-                              height: 3.h,
-                            ),
-                            last: true,
-                          ),
-                          Container(
-                            alignment: Alignment.centerRight,
-                            height: 20,
-                            child: TextButton(
-                              // remove padding on button
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                              ),
-                              onPressed: () {},
-                              child: const Text(
-                                "Forgot Password?",
+                            children: [
+                              TextSpan(
+                                text: "Render Booking App",
                                 style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: 0,
+                                  fontSize: 22.sp,
+                                  fontWeight: FontWeight.w800,
                                   color: primaryColor,
+                                  height: 1.4,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 0.3.h,
+                        ),
+                        Text(
+                          "Sign in to continue",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                            color: lightColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Form(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormFieldWidget(
+                          color: Colors.black,
+                          onFieldTap: () {},
+                          hintText: "Email address",
+                          textInputType: TextInputType.emailAddress,
+                          actionKeyboard: TextInputAction.next,
+                          controller: loginController.emailController,
+                          validatorFunction: (value) {
+                            if (value.isEmpty) {
+                              return "Please enter your email";
+                            } else {
+                              return null;
+                            }
+                          },
+                          suffixIcon: Image.asset(
+                            'assets/images/email-icon.png',
+                            height: textFormFieldIconHeight,
+                          ),
+                          onSubmitField: () {},
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        TextFormFieldWidget(
+                          color: Colors.black,
+                          onFieldTap: () {},
+                          onChanged: (value) {
+                            loginController.passwordController.text = value;
+                          },
+                          hintText: "Password",
+                          obscureText: loginController.hidePassword.value,
+                          textInputType: TextInputType.visiblePassword,
+                          actionKeyboard: TextInputAction.done,
+                          controller: loginController.passwordController,
+                          maxLines: 1,
+                          onSubmitField: () {},
+                          validatorFunction: (value) {
+                            if (value.isEmpty) {
+                              return "Please enter your password".tr;
+                            } else {
+                              return null;
+                            }
+                          },
+                          suffixIcon: Image.asset(
+                            'assets/images/password-icon.png',
+                            height: textFormFieldIconHeight,
+                          ),
+                          last: true,
+                        ),
+                        Container(
+                          alignment: Alignment.centerRight,
+                          height: 20,
+                          child: TextButton(
+                            // remove padding on button
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              "Forgot Password?",
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400,
+                                letterSpacing: 0,
+                                color: primaryColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Obx(
+                              () => Checkbox(
+                                value: loginController.rememberMe.value,
+                                onChanged: (value) {
+                                  loginController.rememberMe.value = value!;
+                                },
+                                activeColor: primaryColor,
+                                checkColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(2.5),
+                                ),
+                                splashRadius: 1.5.h,
+                                side: const BorderSide(
+                                  color: primaryColor,
+                                  style: BorderStyle.solid,
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                SizedBox(
-                                    height: 52,
-                                    width: double.infinity,
-                                    child: CustomElevatedButton(
-                                      height: primaryButtonHeight,
-                                      width: double.infinity,
-                                      borderRadius: primaryButtonBorderRadius,
-                                      onPressed: () {},
-                                      text: "Sign in",
-                                    )),
-                              ],
+                            Text(
+                              "Remember me",
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400,
+                                letterSpacing: 0,
+                                color: lightColor,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3.h,
+                        ),
+                        CustomElevatedButton(
+                          height: primaryButtonHeight,
+                          width: double.infinity,
+                          borderRadius: primaryButtonBorderRadius,
+                          onPressed: () {},
+                          text: "Sign in",
+                        ),
+                      ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: Divider(
+                          color: Colors.grey,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 2.w,
+                      ),
+                      Text(
+                        "OR",
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0,
+                          color: lightColor,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 2.w,
+                      ),
+                      const Expanded(
+                        child: Divider(
+                          color: Colors.grey,
+                          thickness: 0.5,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // 3 social media buttons with icon on the left and text on the right google, facebook and apple
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                  SocialLoginButton(
+                    height: primaryButtonHeight,
+                    width: double.infinity,
+                    borderRadius: 10.0,
+                    onPressed: () {},
+                    text: "Google",
+                    icon: 'assets/images/google-icon.png',
+                  ),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  // facebook button
+                  SocialLoginButton(
+                    height: primaryButtonHeight,
+                    width: double.infinity,
+                    borderRadius: 10.0,
+                    onPressed: () {},
+                    text: "Facebook",
+                    icon: 'assets/images/facebook-icon.png',
+                  ),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  // apple button
+                  SocialLoginButton(
+                    height: primaryButtonHeight,
+                    width: double.infinity,
+                    borderRadius: 10.0,
+                    onPressed: () {},
+                    text: "Apple",
+                    icon: 'assets/images/apple-icon.png',
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),
