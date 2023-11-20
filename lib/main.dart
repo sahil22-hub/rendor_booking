@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:render_booking/app/config/colors.dart';
 import 'package:render_booking/app/modules/login/login_view.dart';
 import 'package:render_booking/app/modules/user_modules/home/view/home_view.dart';
 import 'package:render_booking/app/modules/user_modules/user_mainScreen/userMainScreen.dart';
@@ -26,6 +27,11 @@ class MyApp extends StatelessWidget {
         title: 'Rendor Booking',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          // user #FF6A00 as primaryColor and #1A2C48 as secondaryColor
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: primaryColor,
+            secondary: secondaryColor,
+          ),
           useMaterial3: true,
         ),
         home: UserMainScreen(),

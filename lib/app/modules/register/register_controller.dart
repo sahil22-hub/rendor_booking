@@ -17,7 +17,8 @@ class RegisterController extends GetxController {
   final isLoginLoading = false.obs;
 
   void onSubmit() {
-    if (termsAndConditions.value == false) {
+    if (registerFormKey.currentState!.validate() &&
+        termsAndConditions.value == false) {
       getSnackBar(
         message: "Please accept terms and conditions",
         bgColor: Colors.red,
