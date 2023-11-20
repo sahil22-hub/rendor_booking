@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
-  static const primaryColor = Color.fromRGBO(255, 106, 0, 1);
-  static const secondaryColor = Color.fromRGBO(26, 44, 72, 1);
-}
+const Color primaryColor = Color(0xFFFF6A00);
+const Color secondaryColor = Color(0xFF1A2C48);
+const Color lightColor = Color(0xFF7F7D7D);
+const Color inputFieldBorderColor = Color(0xFFB7B5B5);
