@@ -10,4 +10,12 @@ class LoginController extends GetxController {
   final passwordController = TextEditingController();
   final rememberMe = false.obs;
   final isLoginLoading = false.obs;
+
+  void onSubmit() {
+    if (loginFormKey.currentState!.validate()) {
+      login();
+    }
+  }
+
+  void login() async {}
 }

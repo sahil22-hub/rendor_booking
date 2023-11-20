@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:render_booking/app/config/constants.dart';
 import 'package:render_booking/app/modules/login/login_controller.dart';
+import 'package:render_booking/app/modules/register/register_view.dart';
 import 'package:render_booking/app/widgets/custom_elevated_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -72,6 +73,7 @@ class LoginView extends StatelessWidget {
                     height: 5.h,
                   ),
                   Form(
+                    key: loginController.loginFormKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -132,7 +134,9 @@ class LoginView extends StatelessWidget {
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.off(() => RegisterView());
+                            },
                             child: Text(
                               "Forgot Password?",
                               style: TextStyle(
@@ -144,36 +148,42 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Obx(
-                              () => Checkbox(
-                                value: loginController.rememberMe.value,
-                                onChanged: (value) {
-                                  loginController.rememberMe.value = value!;
-                                },
-                                activeColor: primaryColor,
-                                checkColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(2.5),
-                                ),
-                                splashRadius: 1.5.h,
-                                side: const BorderSide(
-                                  color: primaryColor,
-                                  style: BorderStyle.solid,
+                        GestureDetector(
+                          onTap: () {
+                            loginController.rememberMe.value =
+                                !loginController.rememberMe.value;
+                          },
+                          child: Row(
+                            children: [
+                              Obx(
+                                () => Checkbox(
+                                  value: loginController.rememberMe.value,
+                                  onChanged: (value) {
+                                    loginController.rememberMe.value = value!;
+                                  },
+                                  activeColor: primaryColor,
+                                  checkColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(2.5),
+                                  ),
+                                  splashRadius: 1.5.h,
+                                  side: const BorderSide(
+                                    color: primaryColor,
+                                    style: BorderStyle.solid,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "Remember me",
-                              style: TextStyle(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w400,
-                                letterSpacing: 0,
-                                color: lightColor,
+                              Text(
+                                "Remember me",
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: 0,
+                                  color: lightColor,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: 3.h,
@@ -182,7 +192,9 @@ class LoginView extends StatelessWidget {
                           height: primaryButtonHeight,
                           width: double.infinity,
                           borderRadius: primaryButtonBorderRadius,
-                          onPressed: () {},
+                          onPressed: () {
+                            loginController.onSubmit();
+                          },
                           text: "Sign in",
                         ),
                       ],
