@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:render_booking/app/config/colors.dart';
 import 'package:render_booking/app/modules/login/login_view.dart';
+import 'package:render_booking/app/modules/user_modules/home/view/home_view.dart';
+import 'package:render_booking/app/modules/user_modules/user_mainScreen/userMainScreen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'app/services/storage/services.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: LoginView(),
+        home: UserMainScreen(),
         defaultTransition: Transition.fadeIn,
       ),
     );
